@@ -1,4 +1,4 @@
-# PlateWise AI: FastAPI Pydantic Schemas
+# Kitch: FastAPI Pydantic Schemas
 
 from pydantic import BaseModel, Field
 from typing import List, Optional, Dict, Any

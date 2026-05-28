@@ -1,4 +1,4 @@
--- PlateWise AI: Supabase PostgreSQL Database DDL Schema
+-- Kitch: Supabase PostgreSQL Database DDL Schema
 
 -- 1. Create User Profiles Table (Linked to Supabase Auth)
 CREATE TABLE IF NOT EXISTS public.profiles (

@@ -209,7 +209,7 @@ ${logged.length === 0 ? "You haven't logged any meals today! Simply snap a photo
     }
     // SCENARIO 6: Proactive recipe advice / Hello
     else {
-      reply = `👋 **Hello! I am PlateWise, your GenAI Culinary Companion.** 
+      reply = `👋 **Hello! I am Kitch, your GenAI Culinary Companion.** 
 
 Here is how we can collaborate today:
 1. **Plan Meals:** Ask me to *"Create a high protein weekly plan"* or *"Substitute Wednesday lunch with chicken salad"*.

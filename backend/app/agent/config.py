@@ -1,4 +1,4 @@
-# PlateWise AI: Antigravity SDK Safety Policies
+# Kitch: Antigravity SDK Safety Policies
 
 from google.antigravity import Policies
 

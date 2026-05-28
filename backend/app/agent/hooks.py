@@ -1,4 +1,4 @@
-# PlateWise AI: Antigravity SDK Decide Lifecycle Hooks
+# Kitch: Antigravity SDK Decide Lifecycle Hooks
 
 from google.antigravity import Decide
 

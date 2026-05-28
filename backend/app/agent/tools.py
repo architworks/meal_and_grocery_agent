@@ -1,4 +1,4 @@
-# PlateWise AI: Core Agent Custom Tools
+# Kitch: Core Agent Custom Tools
 
 import math
 from typing import List, Dict, Any

@@ -8,7 +8,7 @@ import { processChatMessage, simulatePhotoScan } from "./engine.js";
 const INITIAL_CHAT = [
   {
     sender: "agent",
-    text: "👋 **Welcome back to PlateWise!** I am your GenAI Culinary Companion.\n\nI have scaled your weekly meal plan for your **3-person household**. \n\n✨ **New Capabilities Enabled:**\n1. **Individual Macro Logs:** Select your active user in the header. We track macros separately for each housemate!\n2. **Pantry Subtraction:** Upload a picture of your fridge shelves using the camera simulation, or type *'We have 6 eggs'* to automatically subtract existing stocks from your grocery cart!\n3. **Blinkit MCP:** Ready to export your finalized grocery checklist to Blinkit via MCP commands.",
+    text: "👋 **Welcome back to Kitch!** I am your GenAI Culinary Companion.\n\nI have scaled your weekly meal plan for your **3-person household**. \n\n✨ **New Capabilities Enabled:**\n1. **Individual Macro Logs:** Select your active user in the header. We track macros separately for each housemate!\n2. **Pantry Subtraction:** Upload a picture of your fridge shelves using the camera simulation, or type *'We have 6 eggs'* to automatically subtract existing stocks from your grocery cart!\n3. **Blinkit MCP:** Ready to export your finalized grocery checklist to Blinkit via MCP commands.",
     time: "09:00 AM"
   }
 ];
@@ -62,7 +62,7 @@ export default function Home() {
   // 1. Initial mounting & LocalStorage sync
   useEffect(() => {
     setIsMounted(true);
-    const saved = localStorage.getItem("platewise_state_v2");
+    const saved = localStorage.getItem("kitch_state_v2");
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -106,7 +106,7 @@ export default function Home() {
         checkedGroceryItems,
         customGroceryItems
       };
-      localStorage.setItem("platewise_state_v2", JSON.stringify(stateToSave));
+      localStorage.setItem("kitch_state_v2", JSON.stringify(stateToSave));
     }
   }, [dietPreference, householdSize, weeklyPlan, activeUser, userProfiles, pantryStock, chatHistory, checkedGroceryItems, customGroceryItems, isMounted]);
 
@@ -400,7 +400,7 @@ export default function Home() {
       "⚡ Segmenting plate elements using Multimodal ViT...",
       "🥩 Core components isolated: estimating density & volume...",
       "🤖 Running regression for calories and macro calculations...",
-      "✅ Success! Analysis package dispatched to PlateWise Core."
+      "✅ Success! Analysis package dispatched to Kitch Core."
     ];
 
     setScanningOverlay({
@@ -611,7 +611,7 @@ Identified recipe: **${scan.result.name}**
         <div className="logo-section">
           <div className="logo-icon">🥗</div>
           <div>
-            <h1>PlateWise AI</h1>
+            <h1>Kitch</h1>
             <span>GenAI Culinary Agent</span>
           </div>
         </div>
@@ -663,7 +663,7 @@ Identified recipe: **${scan.result.name}**
       <main className="layout-grid">
         
         {/* LEFT: CHAT SIMULATOR PANEL */}
-        <section className="chat-simulator" aria-label="PlateWise Chat Agent Sim">
+        <section className="chat-simulator" aria-label="Kitch Chat Agent Sim">
           
           {/* Computer Vision Scanner Scan Overlay */}
           {scanningOverlay.active && (
@@ -693,7 +693,7 @@ Identified recipe: **${scan.result.name}**
             <div className="chat-bot-info">
               <div className="bot-avatar">🤖</div>
               <div className="bot-status">
-                <h3>PlateWise Companion</h3>
+                <h3>Kitch Companion</h3>
                 <span>Online</span>
               </div>
             </div>

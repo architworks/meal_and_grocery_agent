@@ -1,4 +1,4 @@
-# PlateWise AI: Antigravity SDK Agent Assembly Core
+# Kitch: Antigravity SDK Agent Assembly Core
 
 from google.antigravity import Agent, Subagent, LocalAgentConfig
 from .config import safety_policy
@@ -14,9 +14,9 @@ agent_config = LocalAgentConfig(
 # 2. Instantiate the Primary Coordinator Agent (Orchestration Manager)
 coordinator_agent = Agent(
     config=agent_config,
-    name="platewise_coordinator",
+    name="kitch_coordinator",
     instruction=(
-        "You are PlateWise Coordinator, a friendly and empathetic GenAI culinary agent. "
+        "You are Kitch Coordinator, a friendly and empathetic GenAI culinary agent. "
         "Your mission is to help households manage healthy diets, plans, and groceries. "
         "Follow these execution parameters:\n"
         "1. Triage user requests and manage general family parameters (diet profile, household size).\n"

@@ -1,6 +1,6 @@
-# Technical Implementation Plan: PlateWise AI (Pure Antigravity SDK)
+# Technical Implementation Plan: Kitch (Pure Antigravity SDK)
 
-This plan outlines the technical design, backend architecture, and execution blueprint for **PlateWise AI** using the **Google Antigravity SDK** (`google-antigravity`) as our exclusive agentic harness. We have **removed all LangGraph and LangChain dependencies** and decoupled our grocery core from specific delivery platforms.
+This plan outlines the technical design, backend architecture, and execution blueprint for **Kitch** using the **Google Antigravity SDK** (`google-antigravity`) as our exclusive agentic harness. We have **removed all LangGraph and LangChain dependencies** and decoupled our grocery core from specific delivery platforms.
 
 ---
 
@@ -19,7 +19,7 @@ graph TD
         API[FastAPI Gateway]
         
         subgraph Google Antigravity SDK Harness
-            Coord[PlateWise Coordinator Agent]
+            Coord[Kitch Coordinator Agent]
             Coord -->|Dynamic Subagent Spawning| Planner[Culinary Planner Subagent]
             Coord -->|Dynamic Subagent Spawning| Vision[Vision Subagent]
         end

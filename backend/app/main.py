@@ -1,4 +1,4 @@
-# PlateWise AI: FastAPI Production Gateway Server
+# Kitch: FastAPI Production Gateway Server
 
 import os
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Depends
@@ -13,7 +13,7 @@ from app.agent.tools import calculate_intermediary_grocery_list, export_to_deliv
 load_dotenv()
 
 app = FastAPI(
-    title="PlateWise AI Backend Gateway",
+    title="Kitch Backend Gateway",
     description="Python microservice running the Google Antigravity SDK agentic loops.",
     version="2.0.0"
 )
@@ -31,7 +31,7 @@ app.add_middleware(
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat_endpoint(payload: ChatRequest):
     """
-    Exposes conversational chat. Interfaces with the PlateWise Coordinator
+    Exposes conversational chat. Interfaces with the Kitch Coordinator
     running the Antigravity SDK loops.
     """
     try:
