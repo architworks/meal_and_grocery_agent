@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2310B981'/><text y='70' x='15' font-size='60' fill='white'>🥗</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PlateWise AI: Personal Meal Planning & Grocery Agent</title>
+  </head>
+  <body>
+    <!-- SVG gradients for visual nutrition dial -->
+    <svg style="width:0; height:0; position:absolute;" width="0" height="0">
+      <defs>
+        <linearGradient id="emeraldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#34D399" />
+          <stop offset="100%" stop-color="#10B981" />
+        </linearGradient>
+        <linearGradient id="amberGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#FBBF24" />
+          <stop offset="100%" stop-color="#F59E0B" />
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <div id="app">
+      <!-- HEADER SECTION -->
+      <header class="app-header">
+        <div class="logo-section">
+          <div class="logo-icon">🥗</div>
+          <div>
+            <h1>PlateWise AI</h1>
+            <span>GenAI Culinary Agent</span>
+          </div>
+        </div>
+
+        <div class="controls-section">
+          <div class="control-group">
+            <label for="profile-selector">Active User</label>
+            <select id="profile-selector">
+              <option value="Dynamite">Dynamite (You)</option>
+              <option value="Housemate A">Housemate A</option>
+              <option value="Housemate B">Housemate B</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label for="diet-selector">Diet Profile</label>
+            <select id="diet-selector">
+              <option value="balanced">Balanced Diet</option>
+              <option value="keto">Keto / Low-Carb</option>
+              <option value="vegan">Vegan / Plant-Based</option>
+              <option value="high-protein">High-Protein Active</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label for="household-size">Household Size</label>
+            <input type="number" id="household-size" min="1" max="12" value="3" />
+            <span style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">People</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- MAIN APP CORE GRID -->
+      <main class="layout-grid">
+        
+        <!-- LEFT: CHAT SIMULATOR PANEL -->
+        <section class="chat-simulator" aria-label="PlateWise Chat Agent Sim">
+          
+          <!-- Computer Vision Scanner Scan Overlay -->
+          <div id="vision-scanner" class="vision-scanner-overlay">
+            <div class="scanning-image-box">
+              <div class="scan-laser-line"></div>
+              <img id="scan-target-img" src="" alt="Scanning Target" />
+            </div>
+            <h4 id="scanner-title-text" style="color: var(--accent-primary); margin-bottom: 8px; font-weight: 700; text-transform: uppercase; font-size: 13px;">Analyzing Culinary Plate...</h4>
+            <div id="scan-terminal-log" class="scan-log-box"></div>
+          </div>
+
+          <!-- Chat Header -->
+          <div class="chat-header">
+            <div class="chat-bot-info">
+              <div class="bot-avatar">🤖</div>
+              <div class="bot-status">
+                <h3>PlateWise Companion</h3>
+                <span>Online</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Message Bubbles -->
+          <div id="chat-messages" class="chat-messages"></div>
+
+          <!-- Quick Food Snap Demo Tray -->
+          <div class="chat-photo-tray">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <h4>📸 Simulated Snap & Log Camera</h4>
+              <button class="photo-btn" data-file="fridge_interior.jpg" style="background: rgba(16, 185, 129, 0.15); border-color: var(--accent-primary); padding: 2px 6px; font-size:9px; height:auto; width:auto; flex-direction:row;">
+                <span>❄️</span>
+                <label style="cursor:pointer; font-weight:700;">Fridge Scan</label>
+              </button>
+            </div>
+            <div class="photo-options">
+              <button class="photo-btn" data-file="salmon_plate.jpg">
+                <span>🐟</span>
+                <label>Salmon Asparagus</label>
+              </button>
+              <button class="photo-btn" data-file="chicken_quinoa.jpg">
+                <span>🍗</span>
+                <label>Quinoa Bowl</label>
+              </button>
+              <button class="photo-btn" data-file="chickpea_salad.jpg">
+                <span>🥗</span>
+                <label>Chickpea Salad</label>
+              </button>
+              <button class="photo-btn" data-file="berry_smoothie.jpg">
+                <span>🍓</span>
+                <label>Berry Smoothie</label>
+              </button>
+            </div>
+          </div>
+
+          <!-- Message Inputs -->
+          <form id="chat-input-form" class="chat-input-area">
+            <input type="text" id="chat-user-input" placeholder="Ask chef agent or type command..." autocomplete="off" />
+            <button type="submit" class="chat-send-btn">Send</button>
+          </form>
+        </section>
+
+        <!-- RIGHT: WEB DASHBOARD TABS -->
+        <section class="dashboard-container" aria-label="Interactive Web Dashboard">
+          
+          <!-- Tabs Selector -->
+          <nav class="dashboard-tabs">
+            <button class="tab-btn active" data-tab="planner">📅 Weekly Planner</button>
+            <button class="tab-btn" data-tab="analytics">📊 Daily Intake Log</button>
+            <button class="tab-btn" data-tab="groceries">🛒 Grocery Cart</button>
+          </nav>
+
+          <!-- Dynamic Panel Wrapper -->
+          <div class="dashboard-content">
+            
+            <!-- PANEL 1: WEEKLY PLANNER -->
+            <div id="panel-planner" class="tab-panel active">
+              <div class="planner-view">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <h3 id="planner-household-heading">Weekly Plan for 3 People</h3>
+                  <span style="font-size: 12px; color: var(--text-muted); font-weight: 500;">💡 Click any card below to swap meals on the fly!</span>
+                </div>
+                <div id="weekly-plan-grid" class="weekly-grid"></div>
+              </div>
+            </div>
+
+            <!-- PANEL 2: DAILY ANALYTICS -->
+            <div id="panel-analytics" class="tab-panel">
+              <div class="analytics-view">
+                
+                <!-- Circular Calorie Dial -->
+                <div class="summary-circle-container">
+                  <h3 class="tracker-title" id="calorie-tracker-user-title">Calories Today (Dynamite)</h3>
+                  <div class="calorie-dial">
+                    <svg width="180" height="180" viewBox="0 0 180 180">
+                      <circle class="calorie-dial-ring-bg" cx="90" cy="90" r="75" />
+                      <circle id="calorie-dial-fill" class="calorie-dial-ring-fill" cx="90" cy="90" r="75" stroke-dasharray="471.2" stroke-dashoffset="471.2" />
+                    </svg>
+                    <div class="calorie-dial-info">
+                      <h2 id="logged-calories-num">0</h2>
+                      <p id="target-calories-num">/ 2000 kcal</p>
+                    </div>
+                  </div>
+                  <span id="calorie-percentage-badge" style="font-size: 12px; color: var(--accent-primary); font-weight: 700; background: rgba(16,185,129,0.1); padding: 4px 10px; border-radius: 20px;">0% Met</span>
+                </div>
+
+                <!-- Macro Bars -->
+                <div class="macro-breakdown-card">
+                  <h3 class="tracker-title">Macros Breakdown</h3>
+                  
+                  <div class="macro-bar-group">
+                    <div class="macro-bar-header">
+                      <span>Protein (Target: <span id="protein-target-val">150</span>g)</span>
+                      <span><span id="protein-logged-val">0</span>g</span>
+                    </div>
+                    <div class="progress-track">
+                      <div id="protein-bar-fill" class="progress-fill protein" style="width: 0%"></div>
+                    </div>
+                  </div>
+
+                  <div class="macro-bar-group">
+                    <div class="macro-bar-header">
+                      <span>Carbohydrates (Target: <span id="carbs-target-val">200</span>g)</span>
+                      <span><span id="carbs-logged-val">0</span>g</span>
+                    </div>
+                    <div class="progress-track">
+                      <div id="carbs-bar-fill" class="progress-fill carbs" style="width: 0%"></div>
+                    </div>
+                  </div>
+
+                  <div class="macro-bar-group">
+                    <div class="macro-bar-header">
+                      <span>Fats (Target: <span id="fat-target-val">67</span>g)</span>
+                      <span><span id="fat-logged-val">0</span>g</span>
+                    </div>
+                    <div class="progress-track">
+                      <div id="fat-bar-fill" class="progress-fill fat" style="width: 0%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Journal List -->
+                <div class="diary-section">
+                  <div class="diary-header">
+                    <h3 style="font-size: 16px; font-weight: 600;" id="diary-user-heading">Plate Logs (Dynamite)</h3>
+                    <button id="clear-diary-btn" class="clear-diary-btn">Clear Logs</button>
+                  </div>
+                  <div id="diary-list" class="diary-list"></div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- PANEL 3: GROCERY CHECKLIST (UPGRADED LAYOUT) -->
+            <div id="panel-groceries" class="tab-panel">
+              <div class="grocery-layout-triple" style="display:grid; grid-template-columns: 1.2fr 1.2fr 1fr; gap:20px;">
+                
+                <!-- Dynamic Shopping Cart -->
+                <div>
+                  <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 12px; display: flex; align-items:center; gap:8px;">🛒 Shopping Cart</h3>
+                  <div id="grocery-list-grid" class="grocery-list-container"></div>
+                </div>
+
+                <!-- Pantry Stock / Fridge Inventory -->
+                <div style="background: rgba(255,255,255,0.01); border: 1px solid var(--glass-border); border-radius: 16px; padding: 16px; display:flex; flex-direction:column; gap:14px; max-height: 600px; overflow-y: auto;">
+                  <div>
+                    <h3 style="font-size: 15px; font-weight: 700; color: var(--accent-primary); display: flex; align-items:center; gap:6px;">❄️ Pantry Stock (In Fridge)</h3>
+                    <p style="font-size: 10px; color: var(--text-muted); margin-top:2px;">Stock levels here subtract automatically from your cart required totals!</p>
+                  </div>
+                  
+                  <!-- Add Pantry Item Form -->
+                  <div style="display:flex; flex-direction:column; gap:8px; padding: 10px; background: rgba(0,0,0,0.15); border-radius:10px; border:1px solid rgba(255,255,255,0.03);">
+                    <h4 style="font-size: 11px; font-weight:600; text-transform:uppercase; color:var(--text-muted);">Quick Add Fridge Stock</h4>
+                    <input type="text" id="pantry-add-name" placeholder="Item name..." style="background:rgba(255,255,255,0.04); border:1px solid var(--glass-border); border-radius:6px; color:#fff; padding:6px 10px; font-size:12px; outline:none;" />
+                    <div style="display:flex; gap:6px;">
+                      <input type="number" id="pantry-add-amount" placeholder="Qty" value="1" min="0.1" step="0.1" style="background:rgba(255,255,255,0.04); border:1px solid var(--glass-border); border-radius:6px; color:#fff; padding:6px; font-size:12px; width:60px; text-align:center; outline:none;" />
+                      <input type="text" id="pantry-add-unit" placeholder="Unit (piece, cup...)" value="piece" style="background:rgba(255,255,255,0.04); border:1px solid var(--glass-border); border-radius:6px; color:#fff; padding:6px 8px; font-size:12px; flex:1; outline:none;" />
+                    </div>
+                    <button id="pantry-add-btn" style="background:var(--accent-primary); border:none; border-radius:6px; color:var(--text-inverse); font-weight:700; font-size:12px; padding:6px 0; cursor:pointer; transition:var(--transition-smooth);">Add Stock</button>
+                  </div>
+
+                  <!-- Pantry Stock list -->
+                  <div id="pantry-stock-list" style="display:flex; flex-direction:column; gap:8px;"></div>
+                </div>
+
+                <!-- Custom list options sidebar -->
+                <div class="grocery-summary-sidebar" style="height: fit-content;">
+                  <div class="grocery-add-form">
+                    <h4>Add Custom Cart Item</h4>
+                    <input type="text" id="grocery-custom-name" placeholder="E.g. Sparkling water, napkins..." />
+                    <select id="grocery-custom-cat">
+                      <option value="Fresh Produce">Fresh Produce</option>
+                      <option value="Proteins & Dairy">Proteins & Dairy</option>
+                      <option value="Grains & Bakery">Grains & Bakery</option>
+                      <option value="Pantry & Spices">Pantry & Spices</option>
+                    </select>
+                    <button id="grocery-add-item-btn" class="grocery-add-btn">Add to Cart</button>
+                  </div>
+
+                  <hr style="border: 0; height: 1px; background: rgba(255,255,255,0.06);" />
+
+                  <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 13px;">
+                      <span style="color: var(--text-muted)">Required items:</span>
+                      <strong id="grocery-total-count">0</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 13px;">
+                      <span style="color: var(--text-muted)">Stocked / Met:</span>
+                      <strong id="grocery-checked-count" style="color: var(--accent-primary);">0</strong>
+                    </div>
+                  </div>
+
+                  <button id="grocery-checkout-btn" class="grocery-checkout-btn">📦 Order via Blinkit MCP</button>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- RECIPE SWAP MODAL -->
+    <div id="recipe-modal" class="modal-overlay">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 id="modal-heading-text">Swap Meal Recipe</h3>
+          <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">
+            Choose a macro-balanced recipe to swap. Your grocery cart and calories will update automatically!
+          </p>
+          <div id="modal-recipe-list" class="recipe-options-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MCP TOOL CALL HUMAN-IN-THE-LOOP REVIEW DIALOG -->
+    <div id="mcp-modal" class="modal-overlay">
+      <div class="modal-box" style="max-width: 500px;">
+        <div class="modal-header" style="background: rgba(245, 158, 11, 0.1); border-bottom-color: rgba(245, 158, 11, 0.2);">
+          <h3 style="color: var(--accent-secondary); display:flex; align-items:center; gap:8px;">📦 Human-in-the-Loop MCP Review</h3>
+          <button id="mcp-close-btn" class="modal-close-btn">&times;</button>
+        </div>
+        <div class="modal-body" style="padding: 20px;">
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
+            An MCP tool execution has been requested. Please review the parameters below before allowing the agent to place the Blinkit order.
+          </p>
+          
+          <div style="background: #020617; border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 12px; font-family: monospace; font-size: 11px; color: #a5f3fc; overflow-x: auto; margin-bottom: 16px;">
+            <span style="color: #6ee7b7;">// Calling Blinkit MCP Cart Tool...</span><br/>
+            <strong>blinkit_mcp.add_to_cart</strong>({<br/>
+              &nbsp;&nbsp;items: <span id="mcp-items-json" style="color: #fca5a5;">[]</span>,<br/>
+              &nbsp;&nbsp;household_size: <span style="color: #f59e0b;" id="mcp-household-val">3</span><br/>
+            });
+          </div>
+          
+          <div style="display:flex; gap:12px; width:100%;">
+            <button id="mcp-reject-btn" style="flex:1; padding: 10px 0; border-radius:6px; border:1px solid rgba(239,68,68,0.3); background: rgba(239,68,68,0.1); color: var(--accent-coral); font-weight:600; cursor:pointer;">Reject Tool</button>
+            <button id="mcp-approve-btn" style="flex:1; padding: 10px 0; border-radius:6px; border:none; background: var(--accent-primary); color: var(--text-inverse); font-weight:600; cursor:pointer;">Approve MCP Call</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
