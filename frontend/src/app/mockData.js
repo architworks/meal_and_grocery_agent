@@ -4,7 +4,7 @@ export const DIET_TYPES = {
   balanced: {
     name: "Balanced Diet",
     description: "Even distribution of proteins, complex carbs, and healthy fats.",
-    targetMacros: { protein: 30, carbs: 40, fat: 30 }, // percentage of calories
+    targetMacros: { protein: 30, carbs: 40, fat: 30 },
     dailyCalorieTargetPerPerson: 2000
   },
   keto: {
@@ -41,8 +41,7 @@ export const RECIPES = [
       { name: "Whole wheat bread slices", amount: 1, unit: "slice" },
       { name: "Medium ripe avocado", amount: 0.5, unit: "whole" },
       { name: "Fresh organic eggs", amount: 2, unit: "large" },
-      { name: "Cherry tomatoes", amount: 4, unit: "pieces" },
-      { name: "Red pepper flakes & microgreens", amount: 1, unit: "pinch" }
+      { name: "Cherry tomatoes", amount: 4, unit: "pieces" }
     ],
     instructions: "Toast bread. Mash avocado with salt, pepper, and lemon juice. Poach eggs for 3 minutes. Spread avocado on toast, top with poached eggs, halved cherry tomatoes, and microgreens."
   },
@@ -111,8 +110,7 @@ export const RECIPES = [
       { name: "Free-range chicken breast", amount: 150, unit: "g" },
       { name: "Cooked organic quinoa", amount: 1, unit: "cup" },
       { name: "Cucumber slices", amount: 0.5, unit: "cup" },
-      { name: "Crumbled feta cheese", amount: 30, unit: "g" },
-      { name: "Extra virgin olive oil", amount: 1, unit: "tsp" }
+      { name: "Crumbled feta cheese", amount: 30, unit: "g" }
     ],
     instructions: "Season and grill chicken breast until internal temperature hits 165°F. Dice the chicken. Assemble the bowl starting with quinoa, then top with chicken, cucumbers, and feta. Drizzle olive oil and squeeze fresh lemon."
   },
@@ -128,8 +126,7 @@ export const RECIPES = [
       { name: "Canned organic chickpeas", amount: 1, unit: "can" },
       { name: "Red bell pepper", amount: 0.5, unit: "whole" },
       { name: "Kalamata olives", amount: 6, unit: "pieces" },
-      { name: "Red onion", amount: 0.25, unit: "whole" },
-      { name: "Tahini dressing", amount: 2, unit: "tbsp" }
+      { name: "Red onion", amount: 0.25, unit: "whole" }
     ],
     instructions: "Rinse and drain chickpeas. Finely chop bell pepper, olives, and red onion. Mix all ingredients in a bowl and toss with creamy tahini dressing."
   },
@@ -145,8 +142,7 @@ export const RECIPES = [
       { name: "Canned wild-caught salmon", amount: 150, unit: "g" },
       { name: "Avocado oil mayonnaise", amount: 2, unit: "tbsp" },
       { name: "Butter lettuce heads", amount: 3, unit: "leaves" },
-      { name: "Diced celery", amount: 2, unit: "tbsp" },
-      { name: "Fresh dill & chives", amount: 1, unit: "tsp" }
+      { name: "Diced celery", amount: 2, unit: "tbsp" }
     ],
     instructions: "Flake salmon in a bowl and mix with mayonnaise, celery, dill, and chives. Scoop the mixture evenly into butter lettuce leaves."
   },
@@ -163,9 +159,8 @@ export const RECIPES = [
     ingredients: [
       { name: "Wild-caught salmon fillet", amount: 180, unit: "g" },
       { name: "Fresh asparagus stalks", amount: 8, unit: "stalks" },
-      { name: "Grass-fed butter", amount: 1.5, unit: "tbsp" },
-      { name: "Minced garlic", amount: 2, unit: "cloves" },
-      { name: "Fresh lemon slices", amount: 2, unit: "slices" }
+      { name: "Grass-fed butter", amount: 1.5, unit: "tbsp"},
+      { name: "Minced garlic", amount: 2, unit: "cloves"}
     ],
     instructions: "Place salmon and trimmed asparagus on a baking sheet. Melt butter with minced garlic and drizzle over salmon and asparagus. Bake at 400°F for 12-15 minutes until salmon flakes easily."
   },
@@ -181,8 +176,6 @@ export const RECIPES = [
       { name: "Extra-firm organic tofu", amount: 150, unit: "g" },
       { name: "Broccoli florets", amount: 1.5, unit: "cups" },
       { name: "Sliced shiitake mushrooms", amount: 0.5, unit: "cup" },
-      { name: "Toasted sesame oil", amount: 1.5, unit: "tbsp" },
-      { name: "Low-sodium tamari / soy sauce", amount: 2, unit: "tbsp" },
       { name: "Brown rice", amount: 0.75, unit: "cup" }
     ],
     instructions: "Press tofu to drain water, cut into cubes, and pan-fry in sesame oil until golden. Add broccoli and mushrooms, cooking for 5 minutes. Stir in ginger, garlic, and tamari. Serve hot over brown rice."
@@ -199,8 +192,7 @@ export const RECIPES = [
       { name: "Ribeye steak", amount: 200, unit: "g" },
       { name: "Baby spinach leaves", amount: 2, unit: "cups" },
       { name: "Extra virgin olive oil", amount: 1, unit: "tbsp" },
-      { name: "Garlic cloves", amount: 2, unit: "pieces" },
-      { name: "Herb compound butter", amount: 1, unit: "tbsp" }
+      { name: "Garlic cloves", amount: 2, unit: "pieces" }
     ],
     instructions: "Sear ribeye steak in a hot cast-iron skillet for 3-4 minutes per side. Let rest, then top with herb butter. In another pan, sauté baby spinach with olive oil and garlic until wilted."
   },
@@ -216,8 +208,7 @@ export const RECIPES = [
       { name: "Organic chicken breast", amount: 180, unit: "g" },
       { name: "Sweet potato wedges", amount: 150, unit: "g" },
       { name: "Broccoli florets", amount: 1, unit: "cup" },
-      { name: "Olive oil", amount: 1, unit: "tbsp" },
-      { name: "Rosemary & thyme", amount: 1, unit: "tsp" }
+      { name: "Olive oil", amount: 1, unit: "tbsp" }
     ],
     instructions: "Marinate chicken in lemon juice, herbs, and olive oil. Roast sweet potato wedges with sea salt at 420°F. Grill chicken breast for 6 mins per side. Steam broccoli. Plate together."
   },
@@ -234,8 +225,7 @@ export const RECIPES = [
     ingredients: [
       { name: "Raw organic almonds", amount: 1, unit: "oz" },
       { name: "85% dark chocolate square", amount: 1, unit: "square" }
-    ],
-    instructions: "Portion almonds and chocolate. Enjoy together as a sustained energy snack."
+    ]
   },
   {
     id: "s2",
@@ -249,8 +239,7 @@ export const RECIPES = [
       { name: "Organic classic hummus", amount: 3, unit: "tbsp" },
       { name: "English cucumber", amount: 1, unit: "whole" },
       { name: "Kalamata olives", amount: 3, unit: "pieces" }
-    ],
-    instructions: "Slice cucumber diagonally. Scoop hummus into a small dish. Top with chopped olives and serve cucumbers on the side for dipping."
+    ]
   },
   {
     id: "s3",
@@ -265,12 +254,10 @@ export const RECIPES = [
       { name: "Organic honey", amount: 1, unit: "tsp" },
       { name: "Chia seeds", amount: 0.5, unit: "tsp" },
       { name: "Fresh blueberries", amount: 15, unit: "pieces" }
-    ],
-    instructions: "Spoon yogurt into a glass. Layer blueberries, stir in honey, and top with chia seeds."
+    ]
   }
 ];
 
-// Default 7-day plan mapping recipe IDs for easy rendering
 export const DEFAULT_WEEKLY_PLAN = {
   balanced: {
     Monday: { breakfast: "b1", lunch: "l1", dinner: "d1", snack: "s3" },
@@ -310,7 +297,6 @@ export const DEFAULT_WEEKLY_PLAN = {
   }
 };
 
-// Catalog for simulated photo uploads
 export const IMAGE_CATALOG = [
   {
     name: "salmon_plate.jpg",

@@ -2,19 +2,10 @@
 
 import { RECIPES, DIET_TYPES, IMAGE_CATALOG, DEFAULT_WEEKLY_PLAN } from './mockData.js';
 
-/**
- * Normalizes text to simplify matching logic
- */
 function normalize(text) {
   return text.toLowerCase().trim().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
 }
 
-/**
- * Simulates a streaming text response from a GenAI chat agent
- * @param {string} prompt - User message
- * @param {object} appState - Current application state (read/write hooks)
- * @returns {Promise<{text: string, action?: object}>}
- */
 export function processChatMessage(prompt, appState) {
   return new Promise((resolve) => {
     const text = normalize(prompt);
@@ -27,13 +18,11 @@ export function processChatMessage(prompt, appState) {
       let matchedName = "";
       let matchedUnit = "piece";
 
-      // Simple regex parser for quantities (e.g., "we have 3 eggs", "i have 2 milk cartons")
       const qtyMatch = prompt.match(/\b(\d+)\b/);
       if (qtyMatch) {
         matchedQty = parseInt(qtyMatch[1]);
       }
 
-      // Identify the ingredient name by scanning the RECIPES database ingredients
       const words = prompt.toLowerCase().split(" ");
       let matchedIngMeta = null;
 
@@ -42,7 +31,6 @@ export function processChatMessage(prompt, appState) {
           const ingName = ing.name.toLowerCase();
           const ingWords = ingName.split(" ");
           
-          // If the message contains any specific words from our recipe ingredients
           if (ingWords.some(w => w.length > 3 && words.includes(w))) {
             matchedIngMeta = ing;
             matchedName = ing.name;
@@ -53,7 +41,6 @@ export function processChatMessage(prompt, appState) {
         if (matchedIngMeta) break;
       }
 
-      // If we couldn't match a recipe ingredient, make a generic guess
       if (!matchedName) {
         const blacklist = ["we", "have", "i", "the", "fridge", "pantry", "already", "got", "in", "some", "of"];
         const candidateWords = words.filter(w => w.length > 2 && !blacklist.includes(w) && isNaN(w));
@@ -73,7 +60,7 @@ export function processChatMessage(prompt, appState) {
 
         reply = `🍎 **Inventory Sync Action:** I've noted that you already have **${matchedQty} ${matchedUnit} of ${matchedName}** in your fridge/pantry stock.
 
-I have updated your **Pantry Inventory** and automatically subtracted this amount from your weekly grocery checklist! 
+I have updated your **Pantry Inventory** and automatically subtracted this amount from your weekly grocery shopping list! 
 
 If the planned weekly recipes needed more than what you have, you will see a reduced order quantity in your cart. If you already have enough, it has been marked as stocked.`;
       } else {
@@ -102,7 +89,6 @@ If the planned weekly recipes needed more than what you have, you will see a red
         }
       }
 
-      // Look for recipe keyword in message
       for (const recipe of RECIPES) {
         const recipeWords = recipe.name.toLowerCase().split(" ");
         if (recipeWords.some(word => word.length > 3 && text.includes(word))) {
@@ -233,19 +219,12 @@ Here is how we can collaborate today:
 How can I help you feed the household today?`;
     }
 
-    // Delay response to simulate AI thinking
     setTimeout(() => {
       resolve({ text: reply, action });
     }, 850);
   });
 }
 
-/**
- * Simulates a computer vision scan on an uploaded plate or fridge photo
- * @param {string} fileName - Selected dummy photo name
- * @param {object} appState - Current application state
- * @returns {Promise<{scanningSteps: Array<string>, result: object}>}
- */
 export function simulatePhotoScan(fileName, appState) {
   return new Promise((resolve) => {
     const match = IMAGE_CATALOG.find(img => img.name === fileName) || IMAGE_CATALOG[0];
