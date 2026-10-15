@@ -1,0 +1,4 @@
+[mcp_servers.componentry]
+command = "npx"
+args = ["-y", "shadcn@latest", "mcp"]
+cwd = "frontend"

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 2,
+  "name": "Kitch — The Working Kitchen",
+  "version": "1.0.0",
+  "generatedAt": "2026-10-15T16:16:58Z",
+  "tokens": {
+    "colors": {
+      "hearth-forest": "#1f3c28",
+      "working-green": "#27472f",
+      "kitchen-green": "#46673f",
+      "pantry-sage": "#dfead9",
+      "warm-ochre": "#a75b26",
+      "canvas": "#f3f4ef",
+      "card": "#fffefa",
+      "ink": "#1d241e",
+      "ink-soft": "#465048",
+      "muted": "#6e786f",
+      "line": "#d8ddd3",
+      "danger": "#b4232b"
+    },
+    "colorMeta": {
+      "hearth-forest": {"displayName": "Hearth Forest", "role": "Navigation shell and deepest brand surface", "canonical": "#1f3c28", "tonalRamp": ["#102016", "#162b1d", "#1f3c28", "#315840", "#537560", "#7f9987", "#b5c5b8", "#e7ede8"]},
+      "working-green": {"displayName": "Working Green", "role": "Primary actions and active controls", "canonical": "#27472f", "tonalRamp": ["#132419", "#1c3323", "#27472f", "#3b6346", "#628269", "#8fa694", "#becbbf", "#edf1ed"]},
+      "kitchen-green": {"displayName": "Kitchen Green", "role": "Secondary emphasis and progress", "canonical": "#46673f", "tonalRamp": ["#1d2c1a", "#30472b", "#46673f", "#62815b", "#839c7d", "#a8b9a4", "#cdd8ca", "#f0f4ef"]},
+      "pantry-sage": {"displayName": "Pantry Sage", "role": "Selected and supportive states", "canonical": "#dfead9", "tonalRamp": ["#263424", "#435440", "#637660", "#879985", "#adbdaa", "#c9d7c5", "#dfead9", "#f4f8f2"]},
+      "warm-ochre": {"displayName": "Warm Ochre", "role": "Restrained culinary accent", "canonical": "#a75b26", "tonalRamp": ["#3c1d0a", "#642f10", "#8a471b", "#a75b26", "#c47b49", "#dca57e", "#edd0b7", "#faf1e9"]},
+      "canvas": {"displayName": "Canvas", "role": "Page ground", "canonical": "#f3f4ef", "tonalRamp": ["#252724", "#484b46", "#70746c", "#9b9f96", "#c3c6bd", "#dfe1db", "#f3f4ef", "#fbfcf9"]},
+      "card": {"displayName": "Card", "role": "Primary content surface", "canonical": "#fffefa", "tonalRamp": ["#282723", "#504f49", "#7b7972", "#a6a39c", "#d0cec7", "#ebe9e3", "#fffefa", "#ffffff"]},
+      "ink": {"displayName": "Ink", "role": "Primary text", "canonical": "#1d241e", "tonalRamp": ["#101311", "#171c18", "#1d241e", "#343c35", "#59615a", "#858c86", "#b8bdb8", "#eceeec"]},
+      "ink-soft": {"displayName": "Soft Ink", "role": "Secondary text", "canonical": "#465048", "tonalRamp": ["#1c211d", "#303831", "#465048", "#626d64", "#858e86", "#aab0aa", "#d0d4d0", "#f2f4f2"]},
+      "muted": {"displayName": "Muted", "role": "Tertiary text", "canonical": "#6e786f", "tonalRamp": ["#252a26", "#3d443f", "#566058", "#6e786f", "#8f9790", "#b0b6b0", "#d2d6d2", "#f3f4f3"]},
+      "line": {"displayName": "Line", "role": "Borders and dividers", "canonical": "#d8ddd3", "tonalRamp": ["#292d27", "#485045", "#697267", "#8d968a", "#b2b9ae", "#c9cfc4", "#d8ddd3", "#f5f7f3"]},
+      "danger": {"displayName": "Danger", "role": "Destructive and error states only", "canonical": "#b4232b", "tonalRamp": ["#3d080c", "#681016", "#901921", "#b4232b", "#ce4d53", "#e18488", "#efbbbd", "#fbe9ea"]}
+    },
+    "typography": {
+      "display": "\"Avenir Next\", \"Segoe UI\", system-ui, sans-serif",
+      "body": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif"
+    },
+    "typographyMeta": {
+      "display": {"role": "Display headings and prominent titles", "weight": "700–800", "tracking": "-0.02em to -0.04em"},
+      "body": {"role": "Body copy, controls, and data", "weight": "400–700", "tracking": "normal"}
+    },
+    "radii": {"sm": "8px", "md": "11px", "lg": "14px", "xl": "16px"},
+    "spacing": {"base": "8px", "control-gap": "12px", "section-gap": "18px", "card-padding": "24px"},
+    "shadows": {"soft": "0 10px 28px rgba(31, 60, 40, 0.07)", "hover": "0 16px 38px rgba(31, 60, 40, 0.11)"},
+    "motion": {"interface": "180ms cubic-bezier(0.22, 1, 0.36, 1)", "entrance": "cubic-bezier(0.16, 1, 0.3, 1)"},
+    "breakpoints": [
+      {"name": "mobile", "value": "640px"},
+      {"name": "compact", "value": "900px"},
+      {"name": "laptop", "value": "1180px"},
+      {"name": "short-laptop", "value": "820px height"}
+    ]
+  },
+  "components": {
+    "button-primary": {"label": "Primary button", "html": "<button class=\"ds-button ds-button-primary\">Continue</button>", "css": ".ds-button{height:40px;padding:0 15px;border:1px solid transparent;border-radius:11px;font:700 14px -apple-system,BlinkMacSystemFont,\"Segoe UI\",system-ui,sans-serif}.ds-button-primary{color:#fffefa;background:#27472f}.ds-button-primary:focus-visible{outline:3px solid rgba(70,103,63,.28);outline-offset:2px}"},
+    "button-secondary": {"label": "Secondary button", "html": "<button class=\"ds-button ds-button-secondary\">Review</button>", "css": ".ds-button{height:40px;padding:0 15px;border-radius:11px;font:700 14px -apple-system,BlinkMacSystemFont,\"Segoe UI\",system-ui,sans-serif}.ds-button-secondary{color:#465048;background:#fffefa;border:1px solid #d8ddd3}.ds-button-secondary:focus-visible{outline:3px solid rgba(70,103,63,.28);outline-offset:2px}"},
+    "card": {"label": "Content card", "html": "<section class=\"ds-card\"><h2>Card title</h2><p>Useful household information.</p></section>", "css": ".ds-card{padding:24px;color:#1d241e;background:#fffefa;border:1px solid #d8ddd3;border-radius:16px}.ds-card h2{margin:0 0 8px;font:750 24px \"Avenir Next\",\"Segoe UI\",system-ui,sans-serif}.ds-card p{margin:0;color:#465048}"},
+    "input": {"label": "Text input", "html": "<label class=\"ds-field\"><span>Item name</span><input placeholder=\"Add pantry item…\"></label>", "css": ".ds-field{display:grid;gap:6px;color:#465048;font:650 13px -apple-system,BlinkMacSystemFont,\"Segoe UI\",system-ui,sans-serif}.ds-field input{height:42px;padding:10px 12px;color:#1d241e;background:#fffefa;border:1px solid #d8ddd3;border-radius:11px}.ds-field input:focus-visible{outline:3px solid rgba(70,103,63,.28);outline-offset:2px}"},
+    "navigation-item": {"label": "Rail navigation item", "html": "<a class=\"ds-nav-item ds-active\" href=\"#\" aria-current=\"page\">Household</a>", "css": ".ds-nav-item{display:flex;align-items:center;min-height:46px;padding:0 13px;color:rgba(255,255,255,.72);background:#1f3c28;border-radius:11px;font:650 14px -apple-system,BlinkMacSystemFont,\"Segoe UI\",system-ui,sans-serif;text-decoration:none}.ds-nav-item.ds-active{color:#1f3c28;background:#f7f8f3}"},
+    "chip": {"label": "Status or member chip", "html": "<button class=\"ds-chip\" aria-pressed=\"true\">Archit</button>", "css": ".ds-chip{min-height:34px;padding:0 13px;color:#fffefa;background:#27472f;border:1px solid #27472f;border-radius:999px;font:700 13px -apple-system,BlinkMacSystemFont,\"Segoe UI\",system-ui,sans-serif}"},
+    "chat-dock": {"label": "Conversational command bar", "html": "<form class=\"ds-chat\"><textarea aria-label=\"Message Kitch\" placeholder=\"Ask Kitch to plan, log, or add items…\"></textarea><button aria-label=\"Send message\">↑</button></form>", "css": ".ds-chat{display:flex;align-items:center;gap:10px;padding:8px;background:#fffefa;border:1px solid #46673f;border-radius:16px;box-shadow:0 10px 28px rgba(31,60,40,.07)}.ds-chat textarea{min-height:40px;flex:1;padding:10px 12px;border:0;resize:none}.ds-chat button{width:42px;height:42px;color:#fffefa;background:#27472f;border:0;border-radius:11px;font-size:22px}"}
+  },
+  "narrative": {
+    "designDirection": "North Star: The Working Kitchen. Kitch should feel like a calm, capable household workspace: warm enough to belong in the home, structured enough to trust with plans and orders, and fast enough for everyday use. The interface keeps the existing culinary photography and forest-green identity while removing decorative ‘AI app’ styling.",
+    "typography": "Use Avenir Next, falling back to Segoe UI and the system sans-serif, for display headings and prominent titles. Use the native system sans-serif stack for body copy, controls, and data. Headings are bold and compact with slightly negative tracking; body copy is calm and readable. Use tabular numerals for changing quantities, dates, prices, and nutrition values.",
+    "shapeSpaceElevation": "Use an 8px, 11px, 14px, and 16px radius scale. Controls use 8–11px corners; content cards use 14–16px corners. Prefer an 8px base spacing rhythm with 12px control gaps, 18px section gaps, and 24px card padding. Keep surfaces flat by default. Reserve shadows for the rail edge, active navigation, dialogs, and the floating chat dock.",
+    "layoutResponsiveness": "Desktop uses a fixed 216px forest rail and a compact content workspace. Laptop layouts reduce padding and card density without hiding core actions. Mobile turns navigation into a horizontally scrollable top rail, stacks controls and cards, hides redundant prompts, and preserves readable touch targets. Login imagery may crop only enough to maintain full-bleed coverage; overlay content must never collide or force horizontal scrolling.",
+    "interactionAccessibility": "All interactive elements must be keyboard reachable, visibly focused, and labeled. Icon-only buttons require accessible names. Enter submits chat; Shift+Enter inserts a new line. Motion should be short, purposeful, and disabled under prefers-reduced-motion. Touch targets must remain comfortable on mobile, and fixed UI must not obscure focused content.",
+    "guardrails": [
+      "Do preserve the chef-hat mark, existing kitchen photography, forest-green identity, and login-flow arrows.",
+      "Do reuse shared components and tokens so equivalent controls look and behave alike across pages.",
+      "Do keep operational pages calm, dense, and easy to scan.",
+      "Do not add eyebrow labels, decorative pills, glass effects, gradient text, or ornamental component grids.",
+      "Do not introduce translucent buttons, excessive shadows, oversized controls, or unrelated visual changes.",
+      "Do not let animation delay an action or make the interface feel theatrical."
+    ]
+  }
+}

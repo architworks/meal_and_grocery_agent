@@ -1,4 +1,5 @@
 import "./globals.css";
+import "./refinement.css";
 
 export const metadata = {
   title: "Kitch — AI Household Meal Planning Assistant",

@@ -2665,7 +2665,7 @@ export default function Home() {
       active: true,
       title: "Kitch Vision Scanner",
       steps: [
-        "🔍 Establishing connection to Kitch backend...",
+        "🔍 Establishing connection to Kitch backend…",
         `⚡ Uploading image bytes: ${file.name}...`
       ],
       fileName: file.name
@@ -2682,7 +2682,7 @@ export default function Home() {
 
       setScanningOverlay(prev => ({
         ...prev,
-        steps: [...prev.steps, "🧠 Running ADK multimodal vision analysis..."]
+        steps: [...prev.steps, "🧠 Running ADK multimodal vision analysis…"]
       }));
 
       const res = await apiFetch(apiUrl("/api/upload-photo"), {
@@ -2695,7 +2695,7 @@ export default function Home() {
 
       setScanningOverlay(prev => ({
         ...prev,
-        steps: [...prev.steps, "✅ Success! Parsing OCR payload outcomes..."]
+        steps: [...prev.steps, "✅ Success! Parsing OCR payload outcomes…"]
       }));
 
       const data = await res.json();
@@ -3246,6 +3246,7 @@ export default function Home() {
 
   return (
     <div id="app">
+      <a className="skip-link" href="#main-content">Skip to content</a>
       {/* SVG gradients for visual nutrition dial */}
       <svg className="visually-hidden-svg" width="0" height="0">
         <defs>
@@ -3443,6 +3444,7 @@ export default function Home() {
             <button
               key={key}
               className={`rail-link ${activeTab === key ? "active" : ""}`}
+              aria-current={activeTab === key ? "page" : undefined}
               onClick={() => {
                 if (key === "groceries") setGroceryWorkspaceTab("cart");
                 setActiveTab(key);
@@ -3534,7 +3536,7 @@ export default function Home() {
           </div>
         </header>
 
-        <main className="page-canvas">
+        <main id="main-content" className="page-canvas" tabIndex={-1}>
           {activeTab === "about" && (
             <section className="page-view about-page" aria-label="About Kitch">
               <section className="about-hero">
@@ -4502,7 +4504,7 @@ export default function Home() {
                     )}
 
                         <div className="cart-add-row">
-                          <input type="text" disabled={isProviderSyncing} placeholder="Add custom item..." value={groceryCustomName} onChange={(e) => setGroceryCustomName(e.target.value)} />
+                          <input type="text" name="custom-grocery-item" aria-label="Custom grocery item" disabled={isProviderSyncing} placeholder="Add custom item…" value={groceryCustomName} onChange={(e) => setGroceryCustomName(e.target.value)} />
                           <input type="number" disabled={isProviderSyncing} min="0.1" step="0.1" value={groceryCustomAmount} onChange={(e) => setGroceryCustomAmount(parseFloat(e.target.value) || 1)} />
                           <input type="text" disabled={isProviderSyncing} value={groceryCustomUnit} onChange={(e) => setGroceryCustomUnit(e.target.value)} />
                           <select disabled={isProviderSyncing} value={groceryCustomCat} onChange={(e) => setGroceryCustomCat(e.target.value)}>
@@ -4583,7 +4585,7 @@ export default function Home() {
                             </div>
                           )}
                           <div className="pantry-add-row">
-                            <input aria-label="New pantry item" placeholder="Add pantry item..." value={pantryNewItem.name} onChange={event => setPantryNewItem(current => ({ ...current, name: event.target.value }))} />
+                            <input name="new-pantry-item" aria-label="New pantry item" placeholder="Add pantry item…" value={pantryNewItem.name} onChange={event => setPantryNewItem(current => ({ ...current, name: event.target.value }))} />
                             <input aria-label="New pantry item quantity" type="number" min="0.1" step="0.1" value={pantryNewItem.amount} onChange={event => setPantryNewItem(current => ({ ...current, amount: event.target.value }))} />
                             <input aria-label="New pantry item unit" value={pantryNewItem.unit} onChange={event => setPantryNewItem(current => ({ ...current, unit: event.target.value }))} />
                             <button type="button" aria-label="Add to pantry" title="Add to pantry" disabled={!pantryNewItem.name.trim()} onClick={async () => { const saved = await patchPantry([{ action: "add", name: pantryNewItem.name, amount: Number(pantryNewItem.amount), unit: pantryNewItem.unit }]); if (saved) setPantryNewItem({ name: "", amount: 1, unit: "piece" }); }}><PlusIcon /></button>
@@ -5182,7 +5184,7 @@ export default function Home() {
             id="chat-user-input"
             name="chat-user-input"
             rows={1}
-            placeholder={pendingPhoto ? "Add context for this image..." : "Ask Kitch to plan, log, or add items..."}
+            placeholder={pendingPhoto ? "Add context for this image…" : "Ask Kitch to plan, log, or add items…"}
             autoComplete="off"
             value={chatInput}
             onChange={(e) => setChatInput(e.target.value)}
@@ -5239,7 +5241,7 @@ export default function Home() {
               }}
             />
           </label>
-          <button type="submit" className="smart-send-btn" disabled={isChatTyping || (!chatInput.trim() && !pendingPhoto)}>↑</button>
+          <button type="submit" className="smart-send-btn" aria-label="Send message" disabled={isChatTyping || (!chatInput.trim() && !pendingPhoto)}>↑</button>
         </div>
       </form>
 
